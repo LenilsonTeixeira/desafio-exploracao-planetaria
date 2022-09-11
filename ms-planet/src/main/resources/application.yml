@@ -1,1 +1,12 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, prometheus
 
+spring:
+  data:
+    mongodb:
+      database: ${SPRING_DATA_MONGODB_MS_PLANET_DATABASE:planets}
+      port: ${SPRING_DATA_MS_PLANET_PORT:27017}
+      host: ${SPRING_DATA_MS_PLANET_HOST:localhost}

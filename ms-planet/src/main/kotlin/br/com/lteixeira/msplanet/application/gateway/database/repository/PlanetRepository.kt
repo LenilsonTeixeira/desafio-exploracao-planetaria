@@ -4,5 +4,5 @@ import br.com.lteixeira.msplanet.application.gateway.database.document.PlanetDoc
 import org.springframework.data.mongodb.repository.MongoRepository
 
 interface PlanetRepository : MongoRepository<PlanetDocumet, String> {
-
+    fun findByName(name: String): PlanetDocumet?
 }

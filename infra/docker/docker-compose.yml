@@ -1,0 +1,12 @@
+version: '3.7'
+services:
+  mongodb-ms-planet:
+     image: mongo
+     networks:
+       - nw-exploracao-planetaria
+     ports:
+       - "27017:27017"
+     container_name: mongodb-ms-planet
+networks: 
+   nw-exploracao-planetaria:
+        driver: bridge

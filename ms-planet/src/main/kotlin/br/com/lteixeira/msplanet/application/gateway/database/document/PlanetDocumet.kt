@@ -9,12 +9,12 @@ import java.time.LocalDateTime
 @Document(collection = "planet")
 data class PlanetDocumet(
     @Id
-    val id: String,
+    val id: String? = null,
     val externalId: String,
     val name: String,
     val cartesianCoordinateSystemArea: Int,
     @CreatedDate
-    val createdDate: LocalDateTime,
+    val createdDate: LocalDateTime = LocalDateTime.now(),
     @LastModifiedDate
-    val lastModifiedDate: LocalDateTime
+    val lastModifiedDate: LocalDateTime = LocalDateTime.now()
 )

@@ -1,4 +1,4 @@
-package br.com.lteixeira.msplanet.application.gateway
+package br.com.lteixeira.msplanet.application.converter
 
 import br.com.lteixeira.msplanet.api.model.AddPlanetRequest
 import br.com.lteixeira.msplanet.api.model.AddedPlanetResponse

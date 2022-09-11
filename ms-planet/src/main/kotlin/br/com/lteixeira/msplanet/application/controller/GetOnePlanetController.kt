@@ -2,7 +2,7 @@ package br.com.lteixeira.msplanet.application.controller
 
 import br.com.lteixeira.msplanet.api.GetOnePlanetApi
 import br.com.lteixeira.msplanet.api.model.GetOnePlanetResponse
-import br.com.lteixeira.msplanet.application.gateway.toGetOnePlanetResponse
+import br.com.lteixeira.msplanet.application.converter.toGetOnePlanetResponse
 import br.com.lteixeira.msplanet.application.usecase.GetOnePlanetUseCase
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RestController

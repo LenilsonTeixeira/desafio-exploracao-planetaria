@@ -3,8 +3,8 @@ package br.com.lteixeira.msplanet.application.controller
 import br.com.lteixeira.msplanet.api.AddPlanetApi
 import br.com.lteixeira.msplanet.api.model.AddPlanetRequest
 import br.com.lteixeira.msplanet.api.model.AddedPlanetResponse
-import br.com.lteixeira.msplanet.application.gateway.toAddPlanetDomain
-import br.com.lteixeira.msplanet.application.gateway.toAddedPlanetResponse
+import br.com.lteixeira.msplanet.application.converter.toAddPlanetDomain
+import br.com.lteixeira.msplanet.application.converter.toAddedPlanetResponse
 import br.com.lteixeira.msplanet.application.usecase.AddPlanetUseCase
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController

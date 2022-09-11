@@ -9,7 +9,7 @@ import br.com.lteixeira.msplanet.domain.AddedPlanetDomain
 import org.springframework.stereotype.Service
 
 @Service
-class AddPlanetGatewayImpl(val planetRepository: PlanetRepository) : AddPlanetGateway {
+class AddPlanetGatewayImpl(private val planetRepository: PlanetRepository) : AddPlanetGateway {
 
     override fun add(addPlanetDomain: AddPlanetDomain): AddedPlanetDomain {
         val planet = addPlanetDomain.toPlanetDocument()

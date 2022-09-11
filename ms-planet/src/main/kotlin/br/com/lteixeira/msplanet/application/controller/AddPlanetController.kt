@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController
 import javax.validation.Valid
 
 @RestController
-class AddPlanetController(val addPlanetUseCase: AddPlanetUseCase) : AddPlanetApi {
+class AddPlanetController(private val addPlanetUseCase: AddPlanetUseCase) : AddPlanetApi {
 
     override fun add(@Valid @RequestBody addPlanetRequest: AddPlanetRequest): AddedPlanetResponse {
         val request = addPlanetRequest.toAddPlanetDomain()

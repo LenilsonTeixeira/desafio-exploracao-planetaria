@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Component
 
 @Component
-class AddPlanetUseCase(val addPlanetGateway: AddPlanetGateway) {
+class AddPlanetUseCase(private val addPlanetGateway: AddPlanetGateway) {
 
     companion object {
         private val log = LoggerFactory.getLogger(AddPlanetUseCase::class.java)

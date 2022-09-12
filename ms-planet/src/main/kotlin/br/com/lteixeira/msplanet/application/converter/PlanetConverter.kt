@@ -2,12 +2,14 @@ package br.com.lteixeira.msplanet.application.converter
 
 import br.com.lteixeira.msplanet.api.model.AddPlanetRequest
 import br.com.lteixeira.msplanet.api.model.AddedPlanetResponse
+import br.com.lteixeira.msplanet.api.model.GetAllPlanetsResponse
 import br.com.lteixeira.msplanet.api.model.GetOnePlanetResponse
 import br.com.lteixeira.msplanet.api.model.UpdatePlanetRequest
 import br.com.lteixeira.msplanet.api.model.UpdatedPlanetResponse
 import br.com.lteixeira.msplanet.application.gateway.database.document.PlanetDocumet
 import br.com.lteixeira.msplanet.domain.AddPlanetDomain
 import br.com.lteixeira.msplanet.domain.AddedPlanetDomain
+import br.com.lteixeira.msplanet.domain.GetAllPlanetsDomain
 import br.com.lteixeira.msplanet.domain.GetOnePlanetDomain
 import br.com.lteixeira.msplanet.domain.GetPlanetDomain
 import br.com.lteixeira.msplanet.domain.UpdatePlanetDomain
@@ -99,6 +101,22 @@ fun PlanetDocumet.toUpdatedPlanetDomain(): UpdatedPlanetDomain {
 fun UpdatedPlanetDomain.toUpdatedPlanetResponse(): UpdatedPlanetResponse {
     return UpdatedPlanetResponse(
         id = this.externalId,
+        name = this.name,
+        cartesianCoordinateSystemArea = this.cartesianCoordinateSystemArea
+    )
+}
+
+fun PlanetDocumet.toGetAllPlanetsDomain(): GetAllPlanetsDomain {
+    return GetAllPlanetsDomain(
+        id = this.externalId,
+        name = this.name,
+        cartesianCoordinateSystemArea = this.cartesianCoordinateSystemArea
+    )
+}
+
+fun GetAllPlanetsDomain.toGetAllPlanetsResponse(): GetAllPlanetsResponse {
+    return GetAllPlanetsResponse(
+        id = this.id,
         name = this.name,
         cartesianCoordinateSystemArea = this.cartesianCoordinateSystemArea
     )

@@ -2,6 +2,7 @@ package br.com.lteixeira.msplanet.application.usecase
 
 import br.com.lteixeira.msplanet.application.exception.UpdatePlanetException
 import br.com.lteixeira.msplanet.application.gateway.UpdatePlanetGateway
+import br.com.lteixeira.msplanet.application.validator.UpdatePlanetValidator
 import br.com.lteixeira.msplanet.domain.UpdatePlanetDomain
 import br.com.lteixeira.msplanet.domain.UpdatedPlanetDomain
 import org.slf4j.LoggerFactory
@@ -9,16 +10,21 @@ import org.springframework.stereotype.Component
 
 @Component
 class UpdatePlanetUseCase(
+    private val updatePlanetValidator: UpdatePlanetValidator,
+    private val getPlanetUseCase: GetPlanetUseCase,
     private val updatePlanetGateway: UpdatePlanetGateway,
-    private val getPlanetUseCase: GetPlanetUseCase
-) {
+    ) {
 
     companion object {
         private val log = LoggerFactory.getLogger(UpdatePlanetUseCase::class.java)
     }
 
     fun execute(id: String, updatePlanetDomain: UpdatePlanetDomain): UpdatedPlanetDomain {
+        log.info("Executando regras de validação para atualização de planeta");
+        updatePlanetValidator.validate(updatePlanetDomain)
+
         val planet = getPlanetUseCase.execute(id)
+
         runCatching {
             updatePlanetDomain.id = planet.id
             log.info("Preparando para atualizar planeta com id: $id")

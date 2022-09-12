@@ -10,3 +10,7 @@ spring:
       database: ${SPRING_DATA_MONGODB_MS_PLANET_DATABASE:planets}
       port: ${SPRING_DATA_MS_PLANET_PORT:27017}
       host: ${SPRING_DATA_MS_PLANET_HOST:localhost}
+
+springdoc:
+  api-docs:
+    path: /api-docs

@@ -5,4 +5,5 @@ import org.springframework.data.mongodb.repository.MongoRepository
 
 interface PlanetRepository : MongoRepository<PlanetDocumet, String> {
     fun findByName(name: String): PlanetDocumet?
+    fun findByExternalId(externalId: String): PlanetDocumet?
 }

@@ -7,4 +7,5 @@ interface ProbeRepository: MongoRepository<ProbeDocument, String> {
     fun findByName(name: String): ProbeDocument?
     fun findByExternalId(externalId: String): ProbeDocument?
     fun existsByName(name: String): Boolean
+    fun existsByNameAndExternalIdNotLike(name: String, externalId: String): Boolean
 }

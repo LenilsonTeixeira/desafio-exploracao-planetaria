@@ -4,12 +4,16 @@ import br.com.lteixeira.msprobe.api.model.AddProbeRequest
 import br.com.lteixeira.msprobe.api.model.AddedProbeResponse
 import br.com.lteixeira.msprobe.api.model.GetAllProbesResponse
 import br.com.lteixeira.msprobe.api.model.GetOneProbeResponse
+import br.com.lteixeira.msprobe.api.model.UpdateProbeRequest
+import br.com.lteixeira.msprobe.api.model.UpdatedProbeResponse
 import br.com.lteixeira.msprobe.application.gateway.database.document.ProbeDocument
 import br.com.lteixeira.msprobe.domain.AddProbeDomain
 import br.com.lteixeira.msprobe.domain.AddedProbeDomain
 import br.com.lteixeira.msprobe.domain.GetAllProbesDomain
 import br.com.lteixeira.msprobe.domain.GetOneProbeDomain
 import br.com.lteixeira.msprobe.domain.GetProbeDomain
+import br.com.lteixeira.msprobe.domain.UpdateProbeDomain
+import br.com.lteixeira.msprobe.domain.UpdatedProbeDomain
 import java.util.UUID
 
 fun AddProbeRequest.toAddProbeDomain(): AddProbeDomain {
@@ -73,5 +77,34 @@ fun GetAllProbesDomain.toGetAllProbesResponse(): GetAllProbesResponse {
     return GetAllProbesResponse(
         id = this.id,
         name = this.name
+    )
+}
+
+fun UpdateProbeRequest.toUpdateProbeDomain(id: String): UpdateProbeDomain {
+    return UpdateProbeDomain(
+        externalId = id,
+        name = name
+    )
+}
+
+fun UpdatedProbeDomain.toUpdatedProbeResponse(): UpdatedProbeResponse {
+    return UpdatedProbeResponse(
+        id = this.externalId,
+        name = this.name
+    )
+}
+
+fun UpdateProbeDomain.toProbeDocument(): ProbeDocument {
+    return ProbeDocument(
+        id = this.id,
+        externalId = this.externalId,
+        name = this.name
+    )
+}
+
+fun ProbeDocument.toUpdatedProbeDomain(): UpdatedProbeDomain {
+    return UpdatedProbeDomain(
+        externalId = this.externalId,
+        name = this.name,
     )
 }

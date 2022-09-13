@@ -7,6 +7,13 @@ services:
      ports:
        - "27017:27017"
      container_name: mongodb-ms-planet
+  mongodb-ms-probe:
+     image: mongo
+     networks:
+       - nw-exploracao-planetaria
+     ports:
+       - "27027:27017"
+     container_name: mongodb-ms-probe
 networks: 
    nw-exploracao-planetaria:
         driver: bridge

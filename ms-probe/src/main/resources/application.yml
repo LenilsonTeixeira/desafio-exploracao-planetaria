@@ -1,1 +1,19 @@
+server:
+  port: 8081
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, prometheus
+
+spring:
+  data:
+    mongodb:
+      database: ${SPRING_DATA_MONGODB_MS_PROBE_DATABASE:probes}
+      port: ${SPRING_DATA_MS_PROBE_PORT:27027}
+      host: ${SPRING_DATA_MS_PROBE_HOST:localhost}
+
+springdoc:
+  api-docs:
+    path: /api-docs

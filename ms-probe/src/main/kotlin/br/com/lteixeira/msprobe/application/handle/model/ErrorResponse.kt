@@ -1,4 +1,4 @@
-package br.com.lteixeira.msplanet.application.handle.model
+package br.com.lteixeira.msprobe.application.handle.model
 
 import com.fasterxml.jackson.annotation.JsonInclude
 

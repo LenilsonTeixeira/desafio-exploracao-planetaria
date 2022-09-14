@@ -19,6 +19,8 @@ services:
      networks:
        - nw-exploracao-planetaria
      restart: unless-stopped
+     volumes:
+       - ./script:/docker-entrypoint-initdb.d
 networks: 
   nw-exploracao-planetaria:
        driver: bridge

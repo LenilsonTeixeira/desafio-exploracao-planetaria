@@ -2,7 +2,7 @@ package br.com.lteixeira.msprobe.application.gateway.database
 
 import br.com.lteixeira.msprobe.application.gateway.GetAllProbesGateway
 import br.com.lteixeira.msprobe.application.gateway.database.repository.ProbeRepository
-import br.com.lteixeira.msprobe.application.toGetAllProbesDomain
+import br.com.lteixeira.msprobe.application.converter.toGetAllProbesDomain
 import br.com.lteixeira.msprobe.domain.GetAllProbesDomain
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.PageRequest

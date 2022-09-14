@@ -1,4 +1,4 @@
-package br.com.lteixeira.msprobe.application
+package br.com.lteixeira.msprobe.application.converter
 
 import br.com.lteixeira.msprobe.api.model.AddProbeRequest
 import br.com.lteixeira.msprobe.api.model.AddedProbeResponse
@@ -6,7 +6,7 @@ import br.com.lteixeira.msprobe.api.model.GetAllProbesResponse
 import br.com.lteixeira.msprobe.api.model.GetOneProbeResponse
 import br.com.lteixeira.msprobe.api.model.UpdateProbeRequest
 import br.com.lteixeira.msprobe.api.model.UpdatedProbeResponse
-import br.com.lteixeira.msprobe.application.gateway.database.document.ProbeDocument
+import br.com.lteixeira.msprobe.application.gateway.database.entity.ProbeEntity
 import br.com.lteixeira.msprobe.domain.AddProbeDomain
 import br.com.lteixeira.msprobe.domain.AddedProbeDomain
 import br.com.lteixeira.msprobe.domain.GetAllProbesDomain
@@ -29,21 +29,21 @@ fun AddedProbeDomain.toAddedProbeResponse(): AddedProbeResponse {
     )
 }
 
-fun AddProbeDomain.toProbeDocument(): ProbeDocument {
-    return ProbeDocument(
+fun AddProbeDomain.toProbeEntity(): ProbeEntity {
+    return ProbeEntity(
         name = this.name,
         externalId = UUID.randomUUID().toString()
     )
 }
 
-fun ProbeDocument.toAddedProbeDomain(): AddedProbeDomain {
+fun ProbeEntity.toAddedProbeDomain(): AddedProbeDomain {
     return AddedProbeDomain(
         id = this.externalId,
         name = this.name
     )
 }
 
-fun ProbeDocument.toGetProbeDomain(): GetProbeDomain {
+fun ProbeEntity.toGetProbeDomain(): GetProbeDomain {
     return GetProbeDomain(
         id = this.id!!,
         externalId = this.externalId,
@@ -51,7 +51,7 @@ fun ProbeDocument.toGetProbeDomain(): GetProbeDomain {
     )
 }
 
-fun ProbeDocument.toGetOneProbeDomain(): GetOneProbeDomain {
+fun ProbeEntity.toGetOneProbeDomain(): GetOneProbeDomain {
     return GetOneProbeDomain(
         id = this.id!!,
         externalId = this.externalId,
@@ -66,7 +66,7 @@ fun GetOneProbeDomain.toGetOneProbeResponse(): GetOneProbeResponse {
     )
 }
 
-fun ProbeDocument.toGetAllProbesDomain(): GetAllProbesDomain {
+fun ProbeEntity.toGetAllProbesDomain(): GetAllProbesDomain {
     return GetAllProbesDomain(
         id = this.externalId,
         name = this.name
@@ -94,15 +94,15 @@ fun UpdatedProbeDomain.toUpdatedProbeResponse(): UpdatedProbeResponse {
     )
 }
 
-fun UpdateProbeDomain.toProbeDocument(): ProbeDocument {
-    return ProbeDocument(
+fun UpdateProbeDomain.toProbeEntity(): ProbeEntity {
+    return ProbeEntity(
         id = this.id,
         externalId = this.externalId,
         name = this.name
     )
 }
 
-fun ProbeDocument.toUpdatedProbeDomain(): UpdatedProbeDomain {
+fun ProbeEntity.toUpdatedProbeDomain(): UpdatedProbeDomain {
     return UpdatedProbeDomain(
         externalId = this.externalId,
         name = this.name,

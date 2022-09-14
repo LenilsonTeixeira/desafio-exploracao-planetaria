@@ -8,11 +8,16 @@ management:
         include: health, info, prometheus
 
 spring:
-  data:
-    mongodb:
-      database: ${SPRING_DATA_MONGODB_MS_PROBE_DATABASE:probes}
-      port: ${SPRING_DATA_MS_PROBE_PORT:27027}
-      host: ${SPRING_DATA_MS_PROBE_HOST:localhost}
+  jpa:
+    database: postgresql
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  datasource:
+    url: jdbc:postgresql://localhost:5432/probes
+    username: ${SPRING_DATASOURCE_USERNAME:appprobe}
+    password: ${SPRING_DATASOURCE_PASSWORD:appprobe}
+    initialization-mode: always
 
 springdoc:
   api-docs:

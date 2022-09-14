@@ -1,16 +1,24 @@
-package br.com.lteixeira.msprobe.application.gateway.database.document
+package br.com.lteixeira.msprobe.application.gateway.database.entity
 
 import org.springframework.data.annotation.CreatedDate
-import org.springframework.data.annotation.Id
 import org.springframework.data.annotation.LastModifiedDate
-import org.springframework.data.mongodb.core.mapping.Document
 import java.time.LocalDateTime
+import javax.persistence.Column
+import javax.persistence.Entity
+import javax.persistence.GeneratedValue
+import javax.persistence.GenerationType
+import javax.persistence.Id
+import javax.persistence.Table
 
-@Document(collection = "probe")
-data class ProbeDocument(
+@Entity
+@Table(name = "probe")
+data class ProbeEntity(
     @Id
-    val id: String? = null,
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val id: Long? = null,
+    @Column(nullable = false, unique = true, name = "external_id")
     val externalId: String,
+    @Column(nullable = false, unique = true, length = 100, name = "name")
     val name: String,
     @CreatedDate
     val createdDate: LocalDateTime = LocalDateTime.now(),

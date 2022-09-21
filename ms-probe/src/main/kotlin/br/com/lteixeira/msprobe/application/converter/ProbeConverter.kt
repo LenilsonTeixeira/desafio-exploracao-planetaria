@@ -12,6 +12,7 @@ import br.com.lteixeira.msprobe.api.model.UpdatedProbeResponse
 import br.com.lteixeira.msprobe.application.enumeration.Direction
 import br.com.lteixeira.msprobe.application.gateway.database.entity.ProbeEntity
 import br.com.lteixeira.msprobe.application.gateway.database.entity.ProbeLandingEntity
+import br.com.lteixeira.msprobe.application.gateway.http.model.GetPlanetResponse
 import br.com.lteixeira.msprobe.domain.AddProbeDomain
 import br.com.lteixeira.msprobe.domain.AddProbeLandingCoordinateDomain
 import br.com.lteixeira.msprobe.domain.AddProbeLandingDomain
@@ -20,6 +21,7 @@ import br.com.lteixeira.msprobe.domain.AddedProbeLandingCoordinateDomain
 import br.com.lteixeira.msprobe.domain.AddedProbeLandingDomain
 import br.com.lteixeira.msprobe.domain.GetAllProbesDomain
 import br.com.lteixeira.msprobe.domain.GetOneProbeDomain
+import br.com.lteixeira.msprobe.domain.GetPlanetDomain
 import br.com.lteixeira.msprobe.domain.GetProbeDomain
 import br.com.lteixeira.msprobe.domain.UpdateProbeDomain
 import br.com.lteixeira.msprobe.domain.UpdatedProbeDomain
@@ -170,5 +172,12 @@ fun AddedProbeLandingDomain.toAddedProbeLandingResponse(): AddedProbeLandingResp
             locationY = this.probeLandingCoordinate.locationY,
             direction = this.probeLandingCoordinate.direction.name
         )
+    )
+}
+
+fun GetPlanetResponse.toGetPlanetDomain(): GetPlanetDomain {
+    return GetPlanetDomain(
+        name = this.name,
+        cartesianCoordinateSystemArea = this.cartesianCoordinateSystemArea
     )
 }

@@ -11,5 +11,4 @@ data class AddProbeLandingRequest(
 data class AddProbeLandingCoordinateRequest(
     @field:Min(2) val locationX: Int,
     @field:Min(2) val locationY: Int,
-    val direction: String
 )

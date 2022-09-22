@@ -10,5 +10,4 @@ data class AddedProbeLandingResponse(
 data class AddedProbeLandingCoordinateResponse(
     val locationX: Int,
     val locationY: Int,
-    val direction: String
 )

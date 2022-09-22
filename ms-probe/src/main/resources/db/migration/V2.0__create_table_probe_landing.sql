@@ -5,7 +5,6 @@ CREATE TABLE probe_landing(
     planet VARCHAR(100) NOT NULL,
     location_x INTEGER NOT NULL,
     location_y INTEGER NOT NULL,
-    direction VARCHAR(30) NOT NULL,
     created_date TIMESTAMPTZ NOT NULL,
     last_modified_date TIMESTAMPTZ NOT NULL
 );

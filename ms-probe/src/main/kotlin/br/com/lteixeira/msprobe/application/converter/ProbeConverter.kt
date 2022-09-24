@@ -1,7 +1,10 @@
 package br.com.lteixeira.msprobe.application.converter
 
+import br.com.lteixeira.msprobe.api.model.AddProbeCommandCoordinateResponse
+import br.com.lteixeira.msprobe.api.model.AddProbeCommandRequest
 import br.com.lteixeira.msprobe.api.model.AddProbeLandingRequest
 import br.com.lteixeira.msprobe.api.model.AddProbeRequest
+import br.com.lteixeira.msprobe.api.model.AddedProbeCommandResponse
 import br.com.lteixeira.msprobe.api.model.AddedProbeLandingCoordinateResponse
 import br.com.lteixeira.msprobe.api.model.AddedProbeLandingResponse
 import br.com.lteixeira.msprobe.api.model.AddedProbeResponse
@@ -10,12 +13,17 @@ import br.com.lteixeira.msprobe.api.model.GetOneProbeResponse
 import br.com.lteixeira.msprobe.api.model.UpdateProbeRequest
 import br.com.lteixeira.msprobe.api.model.UpdatedProbeResponse
 import br.com.lteixeira.msprobe.application.enumeration.Direction
+import br.com.lteixeira.msprobe.application.gateway.database.entity.ProbeCommandEntity
 import br.com.lteixeira.msprobe.application.gateway.database.entity.ProbeEntity
 import br.com.lteixeira.msprobe.application.gateway.database.entity.ProbeLandingEntity
 import br.com.lteixeira.msprobe.application.gateway.http.model.GetPlanetResponse
+import br.com.lteixeira.msprobe.domain.AddProbeCommandCoordinateDomain
+import br.com.lteixeira.msprobe.domain.AddProbeCommandDomain
 import br.com.lteixeira.msprobe.domain.AddProbeDomain
 import br.com.lteixeira.msprobe.domain.AddProbeLandingCoordinateDomain
 import br.com.lteixeira.msprobe.domain.AddProbeLandingDomain
+import br.com.lteixeira.msprobe.domain.AddedProbeCommandCoordinateDomain
+import br.com.lteixeira.msprobe.domain.AddedProbeCommandDomain
 import br.com.lteixeira.msprobe.domain.AddedProbeDomain
 import br.com.lteixeira.msprobe.domain.AddedProbeLandingCoordinateDomain
 import br.com.lteixeira.msprobe.domain.AddedProbeLandingDomain
@@ -128,7 +136,6 @@ fun AddProbeLandingRequest.toAddProbeLandingDomain(probeName: String): AddProbeL
         probeLandingCoordinate = AddProbeLandingCoordinateDomain(
             locationX = this.probeLandingCoordinate.locationX,
             locationY = this.probeLandingCoordinate.locationY,
-            direction = Direction.valueOf(this.probeLandingCoordinate.direction)
         )
     )
 }
@@ -143,7 +150,6 @@ fun AddProbeLandingDomain.toProbeLandingEntity(): ProbeLandingEntity {
         planet = this.planet,
         locationY = this.probeLandingCoordinate.locationY,
         locationX = this.probeLandingCoordinate.locationX,
-        direction = this.probeLandingCoordinate.direction,
         createdDate = LocalDateTime.now(),
         lastModifiedDate = LocalDateTime.now()
     )
@@ -157,7 +163,6 @@ fun ProbeLandingEntity.toAddedProbeLandingDomain(): AddedProbeLandingDomain {
         probeLandingCoordinate = AddedProbeLandingCoordinateDomain(
             locationX = this.locationX,
             locationY = this.locationY,
-            direction = this.direction,
         )
     )
 }
@@ -170,7 +175,6 @@ fun AddedProbeLandingDomain.toAddedProbeLandingResponse(): AddedProbeLandingResp
         probeLandingCoordinate = AddedProbeLandingCoordinateResponse(
             locationX = this.probeLandingCoordinate.locationX,
             locationY = this.probeLandingCoordinate.locationY,
-            direction = this.probeLandingCoordinate.direction.name
         )
     )
 }
@@ -179,5 +183,52 @@ fun GetPlanetResponse.toGetPlanetDomain(): GetPlanetDomain {
     return GetPlanetDomain(
         name = this.name,
         cartesianCoordinateSystemArea = this.cartesianCoordinateSystemArea
+    )
+}
+
+fun AddProbeCommandRequest.toAddProbeCommandDomain(probe: String): AddProbeCommandDomain {
+    return AddProbeCommandDomain(
+        command = this.command,
+        direction = Direction.fromKey(this.direction),
+        probeName = probe,
+    )
+}
+
+fun AddProbeCommandDomain.toProbeCommandEntity(): ProbeCommandEntity {
+    return ProbeCommandEntity(
+        externalId = UUID.randomUUID().toString(),
+        command = this.command,
+        direction = this.direction.name,
+        probe = ProbeEntity(
+            id = this.probeEntity?.id,
+            externalId = this.probeEntity!!.externalId,
+            name = this.probeEntity!!.name
+        ),
+        locationY = this.probeCommandCoordinate!!.locationY,
+        locationX = this.probeCommandCoordinate!!.locationX,
+        createdDate = LocalDateTime.now(),
+        lastModifiedDate = LocalDateTime.now(),
+    )
+}
+
+fun ProbeCommandEntity.toAddedProbeCommandDomain(): AddedProbeCommandDomain {
+    return AddedProbeCommandDomain(
+        command = this.command,
+        direction = this.direction,
+        probeCommandCoordinate = AddedProbeCommandCoordinateDomain(
+            locationX = this.locationX,
+            locationY = this.locationY
+        )
+    )
+}
+
+fun AddedProbeCommandDomain.toAddedProbeCommandResponse(): AddedProbeCommandResponse {
+    return AddedProbeCommandResponse(
+        command = this.command,
+        direction = this.direction,
+        probeCommandCoordinate = AddProbeCommandCoordinateResponse(
+            locationY = this.probeCommandCoordinate.locationY,
+            locationX = this.probeCommandCoordinate.locationX
+        )
     )
 }

@@ -20,8 +20,10 @@ data class ProbeEntity(
     val externalId: String,
     @Column(nullable = false, unique = true, length = 100, name = "name")
     val name: String,
+    @Column(nullable = false, name = "created_date")
     @CreatedDate
     val createdDate: LocalDateTime = LocalDateTime.now(),
+    @Column(nullable = false, name = "last_modified_date")
     @LastModifiedDate
     val lastModifiedDate: LocalDateTime = LocalDateTime.now()
 )

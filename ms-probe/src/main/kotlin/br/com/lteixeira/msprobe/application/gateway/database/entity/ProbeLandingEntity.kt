@@ -30,8 +30,10 @@ data class ProbeLandingEntity(
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "probe_id")
     val probe: ProbeEntity,
+    @Column(nullable = false, name = "created_date")
     @CreatedDate
     val createdDate: LocalDateTime = LocalDateTime.now(),
+    @Column(nullable = false, name = "last_modified_date")
     @LastModifiedDate
     val lastModifiedDate: LocalDateTime = LocalDateTime.now()
 )

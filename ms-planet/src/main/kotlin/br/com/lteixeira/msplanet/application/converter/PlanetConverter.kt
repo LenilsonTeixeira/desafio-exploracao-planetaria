@@ -7,6 +7,7 @@ import br.com.lteixeira.msplanet.api.model.GetOnePlanetResponse
 import br.com.lteixeira.msplanet.api.model.UpdatePlanetRequest
 import br.com.lteixeira.msplanet.api.model.UpdatedPlanetResponse
 import br.com.lteixeira.msplanet.application.gateway.database.document.PlanetDocumet
+import br.com.lteixeira.msplanet.application.gateway.message.model.Planet
 import br.com.lteixeira.msplanet.domain.AddPlanetDomain
 import br.com.lteixeira.msplanet.domain.AddedPlanetDomain
 import br.com.lteixeira.msplanet.domain.GetAllPlanetsDomain
@@ -117,6 +118,13 @@ fun PlanetDocumet.toGetAllPlanetsDomain(): GetAllPlanetsDomain {
 fun GetAllPlanetsDomain.toGetAllPlanetsResponse(): GetAllPlanetsResponse {
     return GetAllPlanetsResponse(
         id = this.id,
+        name = this.name,
+        cartesianCoordinateSystemArea = this.cartesianCoordinateSystemArea
+    )
+}
+
+fun AddedPlanetDomain.toPlanet(): Planet {
+    return Planet(
         name = this.name,
         cartesianCoordinateSystemArea = this.cartesianCoordinateSystemArea
     )

@@ -1,7 +1,21 @@
 package main
 
-import "fmt"
+import (
+	"ms-radar/internal/config"
+	"ms-radar/internal/pkg/logger"
+	"ms-radar/internal/routes"
+
+	"github.com/labstack/gommon/log"
+)
 
 func main() {
-	fmt.Println("Teste")
+	config.Load()
+	logger.Load(config.Configs)
+
+	port := config.Configs.Application.Port
+	appName := config.Configs.Application.Name
+
+	log.Infof("%v rodando na porta: %v", appName, port)
+
+	routes.InitRoutes()
 }

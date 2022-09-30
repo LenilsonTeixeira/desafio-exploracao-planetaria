@@ -18,9 +18,7 @@ func main() {
 
 	log.Infof("%v rodando na porta: %v", appName, port)
 
-	func() {
-		infrastructure.PlanetConsumer()
-	}()
+	go infrastructure.PlanetConsumer()
 
 	routes.InitRoutes()
 

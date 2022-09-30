@@ -15,5 +15,5 @@ func (c *configWrapper) getApplicationConfig() Application {
 
 func (c *configWrapper) setApplicationDefaults() {
 	c.SetDefault("application.name", "ms-radar")
-	c.SetDefault("application.port", "8082")
+	c.SetDefault("application.port", "8085")
 }

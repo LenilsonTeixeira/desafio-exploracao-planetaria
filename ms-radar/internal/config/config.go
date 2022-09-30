@@ -15,6 +15,7 @@ type Config struct {
 	Application
 	Logging
 	Redis
+	Kafka
 }
 
 type configWrapper struct{ *viper.Viper }
@@ -65,6 +66,7 @@ func (c *configWrapper) load() *Config {
 		Application: c.getApplicationConfig(),
 		Logging:     c.getLoggingConfig(),
 		Redis:       c.getRedisConfig(),
+		Kafka:       c.getKafkaConfig(),
 	}
 }
 

@@ -1,2 +1,5 @@
 cache:
   url: localhost:6379
+
+kafka:
+  bootstrap-server: localhost:9092

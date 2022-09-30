@@ -2,6 +2,7 @@ package main
 
 import (
 	"ms-radar/internal/config"
+	"ms-radar/internal/infrastructure"
 	"ms-radar/internal/pkg/logger"
 	"ms-radar/internal/routes"
 
@@ -17,5 +18,10 @@ func main() {
 
 	log.Infof("%v rodando na porta: %v", appName, port)
 
+	func() {
+		infrastructure.PlanetConsumer()
+	}()
+
 	routes.InitRoutes()
+
 }

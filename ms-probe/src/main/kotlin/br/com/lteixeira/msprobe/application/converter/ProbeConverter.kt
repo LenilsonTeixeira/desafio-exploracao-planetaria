@@ -17,6 +17,8 @@ import br.com.lteixeira.msprobe.application.gateway.database.entity.ProbeCommand
 import br.com.lteixeira.msprobe.application.gateway.database.entity.ProbeEntity
 import br.com.lteixeira.msprobe.application.gateway.database.entity.ProbeLandingEntity
 import br.com.lteixeira.msprobe.application.gateway.http.model.GetPlanetResponse
+import br.com.lteixeira.msprobe.application.gateway.message.model.Probe
+import br.com.lteixeira.msprobe.application.gateway.message.model.ProbeLandingCoordinate
 import br.com.lteixeira.msprobe.domain.AddProbeCommandCoordinateDomain
 import br.com.lteixeira.msprobe.domain.AddProbeCommandDomain
 import br.com.lteixeira.msprobe.domain.AddProbeDomain
@@ -229,6 +231,17 @@ fun AddedProbeCommandDomain.toAddedProbeCommandResponse(): AddedProbeCommandResp
         probeCommandCoordinate = AddProbeCommandCoordinateResponse(
             locationY = this.probeCommandCoordinate.locationY,
             locationX = this.probeCommandCoordinate.locationX
+        )
+    )
+}
+
+fun AddedProbeLandingDomain.toProbe(): Probe {
+    return Probe(
+        planet = this.planet,
+        probe = this.probe,
+        probeLandingCoordinate = ProbeLandingCoordinate(
+           locationX = this.probeLandingCoordinate.locationX,
+           locationY = this.probeLandingCoordinate.locationY
         )
     )
 }

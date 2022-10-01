@@ -1,5 +1,6 @@
 package br.com.lteixeira.msprobe.application.usecase
 
+import br.com.lteixeira.msprobe.application.converter.toProbe
 import br.com.lteixeira.msprobe.application.exception.AddProbeLandingException
 import br.com.lteixeira.msprobe.application.gateway.AddProbeLandingGateway
 import br.com.lteixeira.msprobe.application.validator.validation.ProbeLandingCartesianCoordinateValidation
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Component
 class AddProbeLandingUseCase(
     private val getOneProbeUseCase: GetOneProbeUseCase,
     private val getPlanetUseCase: GetPlanetUseCase,
+    private val publishProbeMessageUseCase: PublishProbeMessageUseCase,
     private val addProbeLandingGateway: AddProbeLandingGateway
 ) {
     companion object {
@@ -31,7 +33,9 @@ class AddProbeLandingUseCase(
 
         runCatching {
             log.info("Registrando pouso da sonda: ${probe.name} no planeta: ${addProbeLandingDomain.planet}")
-            return addProbeLandingGateway.addLanding(addProbeLandingDomain)
+            val probeLanding =  addProbeLandingGateway.addLanding(addProbeLandingDomain)
+            publishProbeMessageUseCase.execute(probe = probeLanding.toProbe())
+            return probeLanding
         }.getOrElse {
             log.error("Falha na tentativa de pousar a sonda: ${probe.name} no planeta: ${addProbeLandingDomain.planet}. Erro: $it")
             throw AddProbeLandingException("Ocorreu um problema na tentativa de pouso da sonda: ${probe.name} no planeta: ${addProbeLandingDomain.planet}")

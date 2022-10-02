@@ -7,8 +7,8 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func GetPlanet(c *gin.Context) {
-	key := c.Param("planet")
+func GetProbe(c *gin.Context) {
+	key := c.Param("probeInfo")
 
 	resp, err := service.GetPlanetFromCache(c.Request.Context(), key)
 
@@ -21,5 +21,5 @@ func GetPlanet(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusNotFound, "planeta não encontrado")
+	c.JSON(http.StatusNotFound, "Sonda não encontrada")
 }

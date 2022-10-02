@@ -11,33 +11,33 @@ import (
 	"github.com/confluentinc/confluent-kafka-go/kafka"
 )
 
-func GetKafkaPlanetConsumer(cfg *config.Kafka) (*kafka.Consumer, error) {
+func GetKafkaProbeConsumer(cfg *config.Kafka) (*kafka.Consumer, error) {
 	return kafka.NewConsumer(&kafka.ConfigMap{
 		"bootstrap.servers": cfg.BootstrapServer,
-		"group.id":          "ms-planet",
+		"group.id":          "ms-probe",
 		"auto.offset.reset": "earliest",
 	})
 }
 
-func PlanetConsumer() {
+func ProbeConsumer() {
 	config := config.Configs.Kafka
-	c, err := GetKafkaPlanetConsumer(&config)
+	c, err := GetKafkaProbeConsumer(&config)
 
 	if err != nil {
 		panic(err)
 	}
 
-	c.SubscribeTopics([]string{"planet"}, nil)
+	c.SubscribeTopics([]string{"probe"}, nil)
 
 	for {
 		msg, err := c.ReadMessage(-1)
 		if err == nil {
 			fmt.Printf("Recebendo mensagem %s: %s\n", msg.TopicPartition, string(msg.Value))
-			var planet model.Planet
-			json.Unmarshal(msg.Value, &planet)
+			var probe model.Probe
+			json.Unmarshal(msg.Value, &probe)
 			ctx := context.Background()
-			service.SavePlanet(ctx, &planet)
-			fmt.Println("Planeta salvo com sucesso no cache.")
+			service.SaveProbe(ctx, &probe)
+			fmt.Println("Sonda salva com sucesso no cache.")
 		} else {
 			fmt.Printf("Erro durante o consumo da mensagem: %v (%v)\n", err, msg)
 		}

@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
+	"fmt"
 	"ms-radar/internal/config"
 	"ms-radar/internal/model"
 
@@ -11,7 +12,7 @@ import (
 )
 
 // Get é responsável por recuperar um valor armazenado no cache
-func GetPlanet(ctx context.Context, key string) (string, error) {
+func GetProbe(ctx context.Context, key string) (string, error) {
 	config := config.Configs.Redis
 
 	redisClient := GetRedisClient(&config)
@@ -24,8 +25,8 @@ func GetPlanet(ctx context.Context, key string) (string, error) {
 	return val, nil
 }
 
-// Save é responsável por salvar registros do planeta no cache
-func SavePlanet(ctx context.Context, p *model.Planet) (*model.Planet, error) {
+// Save é responsável por salvar registros da sonda no cache
+func SaveProbe(ctx context.Context, p *model.Probe) (*model.Probe, error) {
 	config := config.Configs.Redis
 
 	redisClient := GetRedisClient(&config)
@@ -37,7 +38,7 @@ func SavePlanet(ctx context.Context, p *model.Planet) (*model.Planet, error) {
 		return nil, errors.New("erro durante o processo de serialização do objeto armazenado no cache")
 	}
 
-	key := p.Name
+	key := fmt.Sprintf("%v-%v", p.Name, p.Planet)
 
 	err = redisClient.Set(ctx, key, payload, config.DefaultTTL).Err()
 

@@ -9,12 +9,12 @@ import (
 
 // SavePlanet salva planeta no cache por 30 dias
 func SavePlanet(ctx context.Context, p *model.Planet) (*model.Planet, error) {
-	return cache.Save(ctx, p)
+	return cache.SavePlanet(ctx, p)
 }
 
 // GetPlanetFromCache responsável por buscar informações do planeta no cache
 func GetPlanetFromCache(ctx context.Context, planet string) (*model.Planet, error) {
-	val, err := cache.Get(ctx, planet)
+	val, err := cache.GetPlanet(ctx, planet)
 
 	if err != nil {
 		return nil, nil

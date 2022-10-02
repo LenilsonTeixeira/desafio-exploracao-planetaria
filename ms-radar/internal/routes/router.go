@@ -10,7 +10,7 @@ func InitRoutes() {
 	router := gin.Default()
 
 	router.GET("/planets/:planet", api.GetPlanet)
-	router.POST("/planets", api.SavePlanet)
+	router.GET("/probes/:probe", api.GetProbe)
 
 	router.Run(":8082")
 }

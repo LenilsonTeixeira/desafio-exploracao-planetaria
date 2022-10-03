@@ -15,9 +15,10 @@ import javax.validation.Valid
 class AddProbeCommandController(private val addProbeCommandUseCase: AddProbeCommandUseCase) : AddProbeCommandApi {
     override fun addCommand(
         @PathVariable("probe") probe: String,
+        @PathVariable("planet") planet: String,
         @Valid @RequestBody addProbeCommandRequest: AddProbeCommandRequest
     ): AddedProbeCommandResponse {
-        val request = addProbeCommandRequest.toAddProbeCommandDomain(probe)
+        val request = addProbeCommandRequest.toAddProbeCommandDomain(probe, planet)
         return addProbeCommandUseCase.execute(request).toAddedProbeCommandResponse()
     }
 }

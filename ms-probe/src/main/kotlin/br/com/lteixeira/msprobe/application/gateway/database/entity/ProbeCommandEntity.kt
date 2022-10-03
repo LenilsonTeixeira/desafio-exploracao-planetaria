@@ -21,6 +21,8 @@ data class ProbeCommandEntity(
     val id: Long? = null,
     @Column(nullable = false, unique = true, name = "external_id")
     val externalId: String,
+    @Column(nullable = false, name = "planet")
+    val planet: String,
     @Column(nullable = false, name = "command")
     val command: String,
     @Column(nullable = false, length = 30, name = "direction")

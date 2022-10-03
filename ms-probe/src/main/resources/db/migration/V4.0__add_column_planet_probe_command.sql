@@ -1,0 +1,1 @@
+ALTER TABLE probe_command ADD COLUMN planet VARCHAR(100) NOT NULL;

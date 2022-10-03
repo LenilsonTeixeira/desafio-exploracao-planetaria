@@ -20,7 +20,8 @@ interface AddProbeCommandApi {
         ApiResponse(responseCode = "201", description = "Comando adicionado com sucesso"),
         ApiResponse(responseCode = "400", description = "Atributos inválidos")])
     @ResponseStatus(HttpStatus.OK)
-    @PostMapping("probes/{probe}/command")
+    @PostMapping("probes/{probe}/{planet}/command")
     fun addCommand(@PathVariable("probe") probe: String,
+                   @PathVariable("planet") planet: String,
                    @Valid @RequestBody addProbeCommandRequest: AddProbeCommandRequest): AddedProbeCommandResponse
 }

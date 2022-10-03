@@ -188,17 +188,23 @@ fun GetPlanetResponse.toGetPlanetDomain(): GetPlanetDomain {
     )
 }
 
-fun AddProbeCommandRequest.toAddProbeCommandDomain(probe: String): AddProbeCommandDomain {
+fun AddProbeCommandRequest.toAddProbeCommandDomain(probe: String, planet: String): AddProbeCommandDomain {
     return AddProbeCommandDomain(
         command = this.command,
         direction = Direction.fromKey(this.direction),
         probeName = probe,
+        planet = planet,
+        probeCommandCoordinate = AddProbeCommandCoordinateDomain(
+            locationX = this.probeCommandCoordinate.locationX,
+            locationY = this.probeCommandCoordinate.locationY
+        )
     )
 }
 
 fun AddProbeCommandDomain.toProbeCommandEntity(): ProbeCommandEntity {
     return ProbeCommandEntity(
         externalId = UUID.randomUUID().toString(),
+        planet = this.planet,
         command = this.command,
         direction = this.direction.name,
         probe = ProbeEntity(
@@ -215,6 +221,7 @@ fun AddProbeCommandDomain.toProbeCommandEntity(): ProbeCommandEntity {
 
 fun ProbeCommandEntity.toAddedProbeCommandDomain(): AddedProbeCommandDomain {
     return AddedProbeCommandDomain(
+        planet = this.planet,
         command = this.command,
         direction = this.direction,
         probeCommandCoordinate = AddedProbeCommandCoordinateDomain(
@@ -226,6 +233,7 @@ fun ProbeCommandEntity.toAddedProbeCommandDomain(): AddedProbeCommandDomain {
 
 fun AddedProbeCommandDomain.toAddedProbeCommandResponse(): AddedProbeCommandResponse {
     return AddedProbeCommandResponse(
+        planet = this.planet,
         command = this.command,
         direction = this.direction,
         probeCommandCoordinate = AddProbeCommandCoordinateResponse(
@@ -242,6 +250,17 @@ fun AddedProbeLandingDomain.toProbe(): Probe {
         probeLandingCoordinate = ProbeLandingCoordinate(
            locationX = this.probeLandingCoordinate.locationX,
            locationY = this.probeLandingCoordinate.locationY
+        )
+    )
+}
+
+fun AddProbeCommandDomain.toProbe(planet: String): Probe {
+    return Probe(
+        planet = planet,
+        probe = this.probeName,
+        probeLandingCoordinate = ProbeLandingCoordinate(
+            locationY = this.probeCommandCoordinate!!.locationY,
+            locationX = this.probeCommandCoordinate!!.locationX
         )
     )
 }

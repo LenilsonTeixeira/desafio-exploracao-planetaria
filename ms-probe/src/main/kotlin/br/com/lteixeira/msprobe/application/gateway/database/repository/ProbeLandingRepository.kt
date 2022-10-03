@@ -4,4 +4,5 @@ import br.com.lteixeira.msprobe.application.gateway.database.entity.ProbeLanding
 import org.springframework.data.jpa.repository.JpaRepository
 
 interface ProbeLandingRepository: JpaRepository<ProbeLandingEntity, Long> {
+    fun findByExternalId(externalId: String): ProbeLandingEntity?
 }

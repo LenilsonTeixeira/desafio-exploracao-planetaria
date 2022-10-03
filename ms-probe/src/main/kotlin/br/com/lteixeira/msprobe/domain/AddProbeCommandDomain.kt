@@ -6,6 +6,7 @@ data class AddProbeCommandDomain(
     val command: String,
     var direction: Direction,
     val probeName: String,
+    val planet: String,
     var probeEntity: GetOneProbeDomain? = null,
     var probeCommandCoordinate: AddProbeCommandCoordinateDomain? = null
 )

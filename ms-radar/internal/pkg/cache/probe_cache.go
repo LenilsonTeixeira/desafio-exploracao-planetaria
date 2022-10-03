@@ -4,7 +4,6 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
-	"fmt"
 	"ms-radar/internal/config"
 	"ms-radar/internal/model"
 
@@ -38,7 +37,7 @@ func SaveProbe(ctx context.Context, p *model.Probe) (*model.Probe, error) {
 		return nil, errors.New("erro durante o processo de serialização do objeto armazenado no cache")
 	}
 
-	key := fmt.Sprintf("%v-%v", p.Name, p.Planet)
+	key := p.Name
 
 	err = redisClient.Set(ctx, key, payload, config.DefaultTTL).Err()
 

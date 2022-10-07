@@ -1,0 +1,407 @@
+{
+	"info": {
+		"_postman_id": "6867ab40-68ca-4992-bc51-818ef8c13b0d",
+		"name": "Exploração planetária",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "684105"
+	},
+	"item": [
+		{
+			"name": "1 - Adicionar planeta",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"marte\",\n    \"cartesianCoordinateSystemArea\": 5\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/planets",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"planets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2 - Consultar lista de planetas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/planets?page=0&size=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"planets"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3 - Consultar planeta por nome",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/planets/{nomePlaneta}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"planets",
+						"{nomePlaneta}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4 - Atualizar planeta",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"marte\",\n    \"cartesianCoordinateSystemArea\": 4\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/planets/db59c376-b432-4ca4-8852-ce02bc781d07",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"planets",
+						"db59c376-b432-4ca4-8852-ce02bc781d07"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5 - Adicionar sonda",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJsZW5pbHNvbnRzQGdtYWlsLmNvbSIsImV4cCI6MTY2NTExOTg2MSwiaWF0IjoxNjY1MTE2MjYxfQ.bekXNCB1xi3H9cuXY_BcRFUm_2CtGZAhRSTIudYHvq5EDnEzXzxA9Lxj49Qv7dBPKVG6OFtNX6d-VTg553cLwA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"lunar22\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8084/probes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"probes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "6 - Consultar lista de sondas",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJsZW5pbHNvbnRzQGdtYWlsLmNvbSIsImV4cCI6MTY2NTExOTg2MSwiaWF0IjoxNjY1MTE2MjYxfQ.bekXNCB1xi3H9cuXY_BcRFUm_2CtGZAhRSTIudYHvq5EDnEzXzxA9Lxj49Qv7dBPKVG6OFtNX6d-VTg553cLwA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"lunar22\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8084/probes?page=0&size=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"probes"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "7 - Consultar  sonda por nome",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJsZW5pbHNvbnRzQGdtYWlsLmNvbSIsImV4cCI6MTY2NTExOTg2MSwiaWF0IjoxNjY1MTE2MjYxfQ.bekXNCB1xi3H9cuXY_BcRFUm_2CtGZAhRSTIudYHvq5EDnEzXzxA9Lxj49Qv7dBPKVG6OFtNX6d-VTg553cLwA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"lunar22\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8084/probes/lunar22",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"probes",
+						"lunar22"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "8 - Atualizar sonda",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJsZW5pbHNvbnRzQGdtYWlsLmNvbSIsImV4cCI6MTY2NTExOTg2MSwiaWF0IjoxNjY1MTE2MjYxfQ.bekXNCB1xi3H9cuXY_BcRFUm_2CtGZAhRSTIudYHvq5EDnEzXzxA9Lxj49Qv7dBPKVG6OFtNX6d-VTg553cLwA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"lunar2022\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8084/probes/185295f6-ccd0-4f2c-9d78-9c5ab388c485",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"probes",
+						"185295f6-ccd0-4f2c-9d78-9c5ab388c485"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "9 - Configurar pouso da sonda",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJsZW5pbHNvbnRzQGdtYWlsLmNvbSIsImV4cCI6MTY2NTExOTg2MSwiaWF0IjoxNjY1MTE2MjYxfQ.bekXNCB1xi3H9cuXY_BcRFUm_2CtGZAhRSTIudYHvq5EDnEzXzxA9Lxj49Qv7dBPKVG6OFtNX6d-VTg553cLwA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"probe\": \"lunar22\",\n    \"planet\": \"marte\",\n    \"probeLandingCoordinate\": {\n        \"locationX\": 2,\n        \"locationY\": 2\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8084/probes/{nomeDaSonda}/landing",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"probes",
+						"{nomeDaSonda}",
+						"landing"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "9 - Configurar pouso da sonda Copy",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJsZW5pbHNvbnRzQGdtYWlsLmNvbSIsImV4cCI6MTY2NTExOTg2MSwiaWF0IjoxNjY1MTE2MjYxfQ.bekXNCB1xi3H9cuXY_BcRFUm_2CtGZAhRSTIudYHvq5EDnEzXzxA9Lxj49Qv7dBPKVG6OFtNX6d-VTg553cLwA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"probe\": \"lunar22\",\n    \"planet\": \"marte\",\n    \"probeLandingCoordinate\": {\n        \"locationX\": 2,\n        \"locationY\": 2\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8084/probes/{nomeDaSonda}/landing",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"probes",
+						"{nomeDaSonda}",
+						"landing"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "10 - Comandar sonda",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJsZW5pbHNvbnRzQGdtYWlsLmNvbSIsImV4cCI6MTY2NTExOTg2MSwiaWF0IjoxNjY1MTE2MjYxfQ.bekXNCB1xi3H9cuXY_BcRFUm_2CtGZAhRSTIudYHvq5EDnEzXzxA9Lxj49Qv7dBPKVG6OFtNX6d-VTg553cLwA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"command\": \"LRLRM\",\n    \"direction\": \"N\",\n    \"probeCommandCoordinate\": {\n        \"locationX\": 2,\n        \"locationY\": 2\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8084/probes/{nomeSonda}/{nomePlaneta}/command",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"probes",
+						"{nomeSonda}",
+						"{nomePlaneta}",
+						"command"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

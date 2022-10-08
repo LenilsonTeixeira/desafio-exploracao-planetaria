@@ -16,6 +16,6 @@ springdoc:
     path: /api-docs
 
 kafka:
-  bootstrapAddress: localhost:9092
+  bootstrapAddress: broker:9092
   topics:
     planet: planet

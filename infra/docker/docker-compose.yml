@@ -116,6 +116,17 @@ services:
       KAFKA_REST_SCHEMA_REGISTRY_URL: 'http://schema-registry:8081'
     networks:
       - nw-exploracao-planetaria   
+  ms-probe:
+    image: desafio-exploracao-planetaria/ms-probe:latest
+    depends_on:
+      - broker
+      - postgresql
+    ports:
+      - 8084:8084
+    hostname: ms-probe
+    container_name: ms-probe
+    networks:
+      - nw-exploracao-planetaria 
 networks: 
   nw-exploracao-planetaria:
     driver: bridge

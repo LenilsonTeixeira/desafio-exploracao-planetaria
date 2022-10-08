@@ -28,6 +28,6 @@ services:
     url: http://ms-planet:8080
 
 kafka:
-  bootstrapAddress: broker:9092
+  bootstrapAddress: kafka:9092
   topics:
     probe: probe

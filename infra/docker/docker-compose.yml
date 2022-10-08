@@ -127,6 +127,17 @@ services:
     container_name: ms-probe
     networks:
       - nw-exploracao-planetaria
+  ms-planet:
+    image: desafio-exploracao-planetaria/ms-planet:latest
+    depends_on:
+      - broker
+      - mongodb
+    ports:
+      - 8080:8080
+    hostname: ms-planet
+    container_name: ms-planet
+    networks:
+      - nw-exploracao-planetaria
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.17.4
     container_name: elasticsearch

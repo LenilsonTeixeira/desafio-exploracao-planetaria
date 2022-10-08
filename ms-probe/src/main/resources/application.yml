@@ -14,7 +14,7 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
   datasource:
-    url: jdbc:postgresql://localhost:5432/probes
+    url: jdbc:postgresql://postgresql:5432/probes
     username: ${SPRING_DATASOURCE_USERNAME:appprobe}
     password: ${SPRING_DATASOURCE_PASSWORD:appprobe}
     initialization-mode: always
@@ -25,9 +25,9 @@ springdoc:
 
 services:
   planet:
-    url: http://localhost:8080
+    url: http://ms-planet:8080
 
 kafka:
-  bootstrapAddress: localhost:9092
+  bootstrapAddress: broker:9092
   topics:
     probe: probe

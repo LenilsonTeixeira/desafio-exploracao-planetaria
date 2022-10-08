@@ -17,5 +17,5 @@ func (c *configWrapper) getKafkaConfig() Kafka {
 func (c *configWrapper) setKafkaDefaults() {
 	c.SetDefault("kafka.topic.ms-planet", "planet")
 	c.SetDefault("kafka.topic.ms-probe", "probe")
-	c.SetDefault("kafka.bootstrap-server", "http://localhost:9092")
+	c.SetDefault("kafka.bootstrap-server", "http://kafka:9092")
 }

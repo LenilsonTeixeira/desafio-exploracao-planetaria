@@ -12,5 +12,5 @@ func InitRoutes() {
 	router.GET("/planets/:planet", api.GetPlanet)
 	router.GET("/probes/:probe", api.GetProbe)
 
-	router.Run(":8082")
+	router.Run(":8085")
 }

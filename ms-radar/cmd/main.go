@@ -4,6 +4,7 @@ import (
 	"ms-radar/internal/config"
 	"ms-radar/internal/infrastructure"
 	"ms-radar/internal/pkg/logger"
+
 	"ms-radar/internal/routes"
 
 	"github.com/labstack/gommon/log"

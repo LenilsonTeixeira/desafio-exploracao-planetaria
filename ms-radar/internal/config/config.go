@@ -28,8 +28,11 @@ func Load() {
 	config := configWrapper{viper.New()}
 	config.AddConfigPath("./internal/config")
 	config.AddConfigPath("../internal/config")
+	config.AddConfigPath("../../internal/config")
 	config.AddConfigPath("../config")
+	config.AddConfigPath("./source/config")
 	config.SetConfigName(getConfigName())
+
 	config.SetConfigType("yaml")
 
 	// Configurações padrão

@@ -9,7 +9,7 @@ spring:
     mongodb:
       database: ${SPRING_DATA_MONGODB_MS_PLANET_DATABASE:planets}
       port: ${SPRING_DATA_MS_PLANET_PORT:27017}
-      host: ${SPRING_DATA_MS_PLANET_HOST:localhost}
+      host: ${SPRING_DATA_MS_PLANET_HOST:mongodb}
 
 springdoc:
   api-docs:

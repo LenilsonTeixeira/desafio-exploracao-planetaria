@@ -1,6 +1,6 @@
 package br.com.lteixeira.msprobe.application.instrument
 
-import br.com.lteixeira.msplanet.application.helper.MetricHelper
+import br.com.lteixeira.msprobe.application.helper.MetricHelper
 import io.micrometer.core.instrument.Counter
 import io.micrometer.core.instrument.MeterRegistry
 import org.springframework.stereotype.Component

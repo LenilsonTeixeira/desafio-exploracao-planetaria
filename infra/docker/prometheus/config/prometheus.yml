@@ -12,3 +12,9 @@ scrape_configs:
     metrics_path: '/actuator/prometheus'
     static_configs:
       - targets: ['ms-planet:8080']
+
+  - job_name: 'ms-probe'
+    scrape_interval: 5s
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['ms-probe:8084']

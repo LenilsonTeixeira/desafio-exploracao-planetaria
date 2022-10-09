@@ -89,6 +89,9 @@ services:
       - 8085:8085
     hostname: ms-radar
     container_name: ms-radar
+    environment:
+      - ELASTIC_APM_SERVICE_NAME=ms-radar
+      - ELASTIC_APM_SERVER_URL=http://elastic-apm:8200
     networks:
       - nw-exploracao-planetaria
   elasticsearch:

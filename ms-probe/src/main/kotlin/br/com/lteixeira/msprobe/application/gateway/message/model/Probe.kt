@@ -1,12 +1,15 @@
 package br.com.lteixeira.msprobe.application.gateway.message.model
 
+import br.com.lteixeira.msprobe.application.enumeration.Status
+
 data class Probe(
     val planet: String,
     val probe: String,
-    val probeLandingCoordinate: ProbeLandingCoordinate
+    val probeCoordinate: ProbeCoordinate,
+    val status: Status
 )
 
-data class ProbeLandingCoordinate(
+data class ProbeCoordinate(
     val locationX: Int,
     val locationY: Int,
 )

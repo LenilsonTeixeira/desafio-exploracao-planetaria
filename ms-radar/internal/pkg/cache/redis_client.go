@@ -9,6 +9,7 @@ import (
 	"github.com/go-redis/redis/v8"
 	"github.com/joomcode/errorx"
 	log "github.com/sirupsen/logrus"
+	apmgoredis "go.elastic.co/apm/module/apmgoredisv8/v2"
 )
 
 // RedisClient wrapper para redis client
@@ -29,6 +30,9 @@ func GetRedisClient(cfg *config.Redis) *RedisClient {
 			}),
 		}
 	})
+
+	redisClient.AddHook(apmgoredis.NewHook())
+
 	return redisClient
 }
 

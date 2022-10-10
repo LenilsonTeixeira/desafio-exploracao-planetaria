@@ -151,6 +151,18 @@ services:
       interval: 10s
       retries: 12
       test: curl --write-out 'HTTP %{http_code}' --fail --silent --output /dev/null http://localhost:8200/
+  logstash:
+    image: logstash:7.17.4
+    container_name: logstash
+    ports:
+      - "9600:9600"
+    depends_on:
+      - elasticsearch
+      - kafka
+    volumes:
+      - ./logstash/pipeline/:/usr/share/logstash/pipeline/
+    networks:
+      - nw-exploracao-planetaria
   grafana:
     image: grafana/grafana
     container_name: grafana

@@ -26,6 +26,8 @@ springdoc:
 services:
   planet:
     url: http://ms-planet:8080
+  impact-analyzer:
+    url: http://ms-impact-analyzer:8087
 
 kafka:
   bootstrapAddress: kafka:9092

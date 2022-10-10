@@ -1,7 +1,9 @@
 package br.com.lteixeira.msprobe.application.usecase
 
 import br.com.lteixeira.msprobe.application.converter.toProbe
+import br.com.lteixeira.msprobe.application.converter.toSearchProbeCollisionDomain
 import br.com.lteixeira.msprobe.application.exception.AddProbeLandingException
+import br.com.lteixeira.msprobe.application.exception.ProbeCollisionException
 import br.com.lteixeira.msprobe.application.gateway.AddProbeLandingGateway
 import br.com.lteixeira.msprobe.application.validator.validation.ProbeLandingCartesianCoordinateValidation
 import br.com.lteixeira.msprobe.domain.AddProbeLandingDomain
@@ -14,6 +16,7 @@ class AddProbeLandingUseCase(
     private val getOneProbeUseCase: GetOneProbeUseCase,
     private val getPlanetUseCase: GetPlanetUseCase,
     private val publishProbeMessageUseCase: PublishProbeMessageUseCase,
+    private val processProbeImpactAnalyzerUseCase: ProcessProbeImpactAnalyzerUseCase,
     private val addProbeLandingGateway: AddProbeLandingGateway
 ) {
     companion object {
@@ -30,6 +33,13 @@ class AddProbeLandingUseCase(
 
         log.info("Validando informações de pouso da sonda: ${addProbeLandingDomain.probeName}")
         ProbeLandingCartesianCoordinateValidation.validate(planet.cartesianCoordinateSystemArea, addProbeLandingDomain)
+
+        log.info("Processando analise de impacto da sonda: ${addProbeLandingDomain.probeName}")
+        val result = processProbeImpactAnalyzerUseCase.execute(addProbeLandingDomain.toSearchProbeCollisionDomain())
+
+        if (result) {
+            throw ProbeCollisionException("Impacto detectado! Não é possível pousar a sonda ${addProbeLandingDomain.probeName} nessas coordenadas")
+        }
 
         runCatching {
             log.info("Registrando pouso da sonda: ${probe.name} no planeta: ${addProbeLandingDomain.planet}")

@@ -18,6 +18,8 @@ import br.com.lteixeira.msprobe.application.gateway.database.entity.ProbeCommand
 import br.com.lteixeira.msprobe.application.gateway.database.entity.ProbeEntity
 import br.com.lteixeira.msprobe.application.gateway.database.entity.ProbeLandingEntity
 import br.com.lteixeira.msprobe.application.gateway.http.model.GetPlanetResponse
+import br.com.lteixeira.msprobe.application.gateway.http.model.GetProbeCollisionResponse
+import br.com.lteixeira.msprobe.application.gateway.http.model.ProbeCollisionResponse
 import br.com.lteixeira.msprobe.application.gateway.message.model.Probe
 import br.com.lteixeira.msprobe.application.gateway.message.model.ProbeCoordinate
 import br.com.lteixeira.msprobe.domain.AddProbeCommandCoordinateDomain
@@ -33,7 +35,10 @@ import br.com.lteixeira.msprobe.domain.AddedProbeLandingDomain
 import br.com.lteixeira.msprobe.domain.GetAllProbesDomain
 import br.com.lteixeira.msprobe.domain.GetOneProbeDomain
 import br.com.lteixeira.msprobe.domain.GetPlanetDomain
+import br.com.lteixeira.msprobe.domain.GetProbeCollisionDomain
 import br.com.lteixeira.msprobe.domain.GetProbeDomain
+import br.com.lteixeira.msprobe.domain.ProbeCollision
+import br.com.lteixeira.msprobe.domain.SearchProbeCollisionDomain
 import br.com.lteixeira.msprobe.domain.UpdateProbeDomain
 import br.com.lteixeira.msprobe.domain.UpdatedProbeDomain
 import java.time.LocalDateTime
@@ -267,5 +272,39 @@ fun AddProbeCommandDomain.toProbe(planet: String): Probe {
             locationX = this.probeCommandCoordinate!!.locationX
         ),
         status = Status.EXPLORING
+    )
+}
+
+fun GetProbeCollisionResponse.toGetProbeCollisionDomain(): GetProbeCollisionDomain {
+    return GetProbeCollisionDomain(
+        totalElements = this.totalElements,
+        probes = this.probes.map { it.toProbeCollision() }
+    )
+}
+
+fun ProbeCollisionResponse.toProbeCollision(): ProbeCollision {
+    return ProbeCollision(
+        planet = this.planet,
+        probe = this.probe,
+        locationY = this.locationY,
+        locationX = this.locationX
+    )
+}
+
+fun AddProbeLandingDomain.toSearchProbeCollisionDomain(): SearchProbeCollisionDomain {
+    return SearchProbeCollisionDomain(
+        planet = this.planet,
+        probe = this.probeName,
+        locationX = this.probeLandingCoordinate.locationX,
+        locationY = this.probeLandingCoordinate.locationY
+    )
+}
+
+fun AddProbeCommandDomain.toSearchProbeCollisionDomain(): SearchProbeCollisionDomain {
+    return SearchProbeCollisionDomain(
+        planet = this.planet,
+        probe = this.probeName,
+        locationX = this.probeCommandCoordinate!!.locationX,
+        locationY = this.probeCommandCoordinate!!.locationY
     )
 }

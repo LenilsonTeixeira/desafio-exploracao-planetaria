@@ -58,3 +58,8 @@ Inicialmente é necessário buildar e construir a imagem docker dos serviços co
  
  ### Collection do Postman
  - A collection do postman está na pasta **collection**.
+
+### ATENÇÃO
+ - Após iniciar os serviços com o docker compose, verifique pelo logs se todos serviços subiram com sucesso antes de executar o fluxo, para isso basta executar o comando:
+ ```docker logs -f [nome-do-container]```
+ - Se notar algum comportamento estranho em algum container reiniciei o container com o comando: **docker restart [nome-do-container]**. Caso o problema ainda persistir, remova o container com o comando **docker rm -f [nome-do-container]**. Após o procedimento, execute novamente o comando **docker compose up -d** para subir novamente os serviços

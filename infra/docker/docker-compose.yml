@@ -94,6 +94,18 @@ services:
       - ELASTIC_APM_SERVER_URL=http://elastic-apm:8200
     networks:
       - nw-exploracao-planetaria
+  ms-impact-analyzer:
+    image: desafio-exploracao-planetaria/ms-impact-analyzer:latest
+    depends_on:
+      - kafka
+      - elasticapm
+      - logstash
+    ports:
+      - 8087:8087
+    hostname: ms-impact-analyzer
+    container_name: ms-impact-analyzer
+    networks:
+      - nw-exploracao-planetaria
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.17.4
     container_name: elasticsearch

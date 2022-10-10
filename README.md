@@ -3,6 +3,18 @@
 # Arquitetura
 ![](https://github.com/LenilsonTeixeira/desafio-exploracao-planetaria/blob/main/arquitetura.png)
 
+# Service Map
+![](https://github.com/LenilsonTeixeira/desafio-exploracao-planetaria/blob/main/service-map.png)
+
+# APM
+![](https://github.com/LenilsonTeixeira/desafio-exploracao-planetaria/blob/main/apm.png)
+
+# Pipeline Logstash
+![](https://github.com/LenilsonTeixeira/desafio-exploracao-planetaria/blob/main/pipeline-logstash.png)
+
+# Mensagem processada através do pipeline do Logstash
+![](https://github.com/LenilsonTeixeira/desafio-exploracao-planetaria/blob/main/mensagem-processada-logstash.png)
+
 # Stack
  - Kotlin
  - Golang
@@ -75,11 +87,9 @@ Inicialmente é necessário buildar e construir a imagem docker dos serviços co
 - http://localhost:8087/probes/collision?planet=terra&probe=lunar&locationX=3&locationY=3 (exemplo de chamada ao ms-impact-analyzer)
 - http://localhost:8085/planets/marte  (exemplo de chamada ao ms-radar para consutar planeta salvo no cache)
 - http://localhost:8085/probes/lunar (exemplo de chamada ao ms-radar para consultar informação atualizada da sonda no cache)
-- 
 
 
 ### ATENÇÃO
  - Após iniciar os serviços com o docker compose, verifique pelo logs se todos serviços subiram com sucesso antes de executar o fluxo, para isso basta executar o comando:
  ```docker logs -f [nome-do-container]```
  - Se notar algum comportamento estranho em algum container reiniciei o container com o comando: **docker restart [nome-do-container]**. Caso o problema ainda persistir, remova o container com o comando **docker rm -f [nome-do-container]**. Após o procedimento, execute novamente o comando **docker compose up -d** para subir novamente os serviços.
- - 

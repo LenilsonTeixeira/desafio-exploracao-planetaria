@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Value
 class QueryBuilder {
 
     @Value("\${elasticsearch.index}")
-    private val index: String = "probe-sensor"
+    private val index: String = "probe-collision"
 
     fun build(searchRequestParam: SearchRequestParam): SearchRequest {
         val matchQueryBuilder = QueryRequestBuilder.build(searchRequestParam)

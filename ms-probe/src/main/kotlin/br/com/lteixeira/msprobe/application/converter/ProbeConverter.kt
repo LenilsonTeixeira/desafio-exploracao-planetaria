@@ -246,6 +246,7 @@ fun AddedProbeCommandDomain.toAddedProbeCommandResponse(): AddedProbeCommandResp
 
 fun AddedProbeLandingDomain.toProbe(): Probe {
     return Probe(
+        id = UUID.randomUUID().toString(),
         planet = this.planet,
         probe = this.probe,
         probeCoordinate = ProbeCoordinate(
@@ -258,6 +259,7 @@ fun AddedProbeLandingDomain.toProbe(): Probe {
 
 fun AddProbeCommandDomain.toProbe(planet: String): Probe {
     return Probe(
+        id = UUID.randomUUID().toString(),
         planet = planet,
         probe = this.probeName,
         probeCoordinate = ProbeCoordinate(

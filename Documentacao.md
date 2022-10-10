@@ -48,6 +48,7 @@ Inicialmente é necessário buildar e construir a imagem docker dos serviços co
 ### Criar indíce no Elasticsearch
   - Acessar http://localhost:5601, no menu lateral nevegar até a opção **management** e clicar em DevTools. No painel do DevTools executar o seguinte comando: 
   ```PUT /probe-collision```
+  Obs: **ESSA PARTE DA CRIAÇÃO DO ÍNDICE É SUPER IMPORTANTE PARA O FUNCIONAMENTO DA SOLUÇÃO COMPLETA**
 
 ### Fluxo 
  1º Adicionar planeta

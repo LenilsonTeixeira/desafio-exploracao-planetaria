@@ -23,5 +23,5 @@ scrape_configs:
     scrape_interval: 5s
     metrics_path: '/actuator/prometheus'
     static_configs:
-      - targets: ['ms-probe:8087']  
+      - targets: ['ms-impact-analyzer:8087']  
   

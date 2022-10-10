@@ -4,7 +4,7 @@ server:
 elasticsearch:
   host: elasticsearch
   port: 9200
-  index: probe-sensor
+  index: probe-collision
 
 spring:
   data:

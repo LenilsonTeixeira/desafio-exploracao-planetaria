@@ -6,6 +6,6 @@ WORKDIR /app
 ARG JAR_FILE=./target/*.jar
 COPY ${JAR_FILE} application.jar
 
-EXPOSE 8084
+EXPOSE 8087
 
 CMD ["sh", "-c", "java -jar application.jar"]

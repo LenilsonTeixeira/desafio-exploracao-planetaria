@@ -79,7 +79,6 @@ Inicialmente é necessário buildar e construir a imagem docker dos serviços co
 
 ## URLs
 - http://localhost:5601 (Kibana)
-- 
 - http://localhost:5601/app/dev_tools#/console (DevTools)
 - http://localhost:9200 (Elasticsearch)
 - http://localhost:5601/app/apm/services (APM)

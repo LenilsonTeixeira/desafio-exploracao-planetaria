@@ -67,8 +67,11 @@ Inicialmente é necessário buildar e construir a imagem docker dos serviços co
 
 ### Fluxo 
  1º Adicionar planeta
+ 
  2º Adicionar sonda
+ 
  3º Adicionar instruções de pouso
+ 
  4º Enviar comandos para a sonda
  
  ### Collection do Postman
@@ -83,10 +86,10 @@ Inicialmente é necessário buildar e construir a imagem docker dos serviços co
 - http://localhost:9090/targets (Prometheus)
 - http://localhost:3000/login (Grafana) Usuário: admin Senha: admin 
 
-**Consultas internas
-- http://localhost:8087/probes/collision?planet=terra&probe=lunar&locationX=3&locationY=3 (exemplo de chamada ao ms-impact-analyzer)
-- http://localhost:8085/planets/marte  (exemplo de chamada ao ms-radar para consutar planeta salvo no cache)
-- http://localhost:8085/probes/lunar (exemplo de chamada ao ms-radar para consultar informação atualizada da sonda no cache)
+**Consultas internas:**
+- GET http://localhost:8087/probes/collision?planet=terra&probe=lunar&locationX=3&locationY=3 (exemplo de chamada ao ms-impact-analyzer)
+- GET http://localhost:8085/planets/marte  (exemplo de chamada ao ms-radar para consutar planeta salvo no cache)
+- GET http://localhost:8085/probes/lunar (exemplo de chamada ao ms-radar para consultar informação atualizada da sonda no cache)
 
 
 ### ATENÇÃO

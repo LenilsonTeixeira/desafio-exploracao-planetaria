@@ -30,6 +30,21 @@ A orientação da sonda dentro do plano cartesiano usa uma rosa dos ventos como 
 
 ![rosa dos ventos](http://i.imgur.com/li8Ae5L.png "Rosa dos Ventos")
 
+## O desafio
+
+### Regra de negócios:
+
+- [ ] Primeiramente, pense quais comportamentos fazem sentido para dar suporte *a várias sondas pousando em um mesmo planeta com uma superfície limitada (podendo haver vários planetas)*. Considere que as sondas possuem combustível infinito e sempre estão disponíveis para receber ordens de movimento.
+
+### Para pretensões senior APENAS:
+
+No caso da pretenção estar no patamar de senior nós requisitamos alguns desafios extras:
+
+- [ ] Se preocupe com uma maneira de documentar a api do sistema web;
+- [ ] Tenha em mente escalabilidade, disponibilidade e performance em sua solução. Apesar do problema proposto ser bem didático procure tratar a solução como um sistema de produção real.
+
+
+
 
 # Solução proposta
 

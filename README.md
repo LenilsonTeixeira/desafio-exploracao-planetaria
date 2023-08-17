@@ -31,8 +31,6 @@ A orientação da sonda dentro do plano cartesiano usa uma rosa dos ventos como 
 ![rosa dos ventos](http://i.imgur.com/li8Ae5L.png "Rosa dos Ventos")
 
 
-
-```
 # Solução proposta
 
 # Arquitetura
